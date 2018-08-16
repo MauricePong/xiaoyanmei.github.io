@@ -1,0 +1,227 @@
+<!DOCTYPE HTML>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>世界上最可爱的女生，是肖艳梅</title>
+<style type="text/css">
+@font-face {
+	font-family: digit;
+	src: url('digital-7_mono.ttf') format("truetype");
+}
+</style>
+
+<link href="css/default.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/garden.js"></script>
+<script type="text/javascript" src="js/functions.js"></script>
+
+</head>
+
+<body>
+
+<div id="mainDiv">
+	<div id="content">
+		<div id="code">
+			<span class="comments">/**</span><br />
+			<span class="space"/><span class="comments">*2018—08-10,</span><br />
+			<span class="space"/><span class="comments">*/</span><br />
+			Boy name = <span class="keyword">Mr</span> Peng<br />
+			Girl name = <span class="keyword">Mrs</span> Xiao<br />
+			<br>
+			<br>
+			I want to say:<br />
+			I love you forever;<br />
+		</div>
+		<div id="loveHeart">
+			<canvas id="garden"></canvas>
+			<div id="words">
+				<div id="messages">
+					亲爱的，这是我们相爱在一起的时光。
+					<div id="elapseClock"></div>
+				</div>
+				<div id="loveu">
+					爱你直到永永远远。<br/>
+					<div class="signature">- 彭先生</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+var offsetX = $("#loveHeart").width() / 2;
+var offsetY = $("#loveHeart").height() / 2 - 55;
+var together = new Date();
+together.setFullYear(2018,07,10);
+together.setHours(0);
+together.setMinutes(0);
+together.setSeconds(0);
+together.setMilliseconds(0);
+
+if (!document.createElement('canvas').getContext) {
+	var msg = document.createElement("div");
+	msg.id = "errorMsg";
+	msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+"; 
+	document.body.appendChild(msg);
+	$("#code").css("display", "none")
+	$("#copyright").css("position", "absolute");
+	$("#copyright").css("bottom", "10px");
+	document.execCommand("stop");
+} else {
+	setTimeout(function () {
+		startHeartAnimation();
+	}, 5000);
+
+	timeElapse(together);
+	setInterval(function () {
+		timeElapse(together);
+	}, 500);
+
+	adjustCodePosition();
+	$("#code").typewriter();
+}
+</script>
+	<audio controls="controls" hidden="hidden" autoplay="autoplay" loop="loop">
+		<source src="https://www.xn--3zv762c5jb.xn--6qq986b3xl/song/大克星.mp3" type="audio/mpeg" />
+	</audio>
+	
+	<style>
+html,body{height: 100%;width: 100%;}
+body,ol,ul,h1,h2,h3,h4,h5,h6,p,th,td,dl,dd,form,fieldset,legend,input,textarea,select{margin:0;padding:0} 
+body{font-size:12px;font-family:'微软雅黑';background:#fff;height: 100%;width: 100%;background-color: #fff;} 
+a{color:#2d374b;text-decoration:none} 
+a:hover{color:#cd0200;text-decoration:underline} 
+em{font-style:normal} 
+li{list-style:none} 
+img{border:0;vertical-align:middle} 
+table{border-collapse:collapse;border-spacing:0} 
+p{word-wrap:break-word}
+#content { 
+	width: 100%;
+	height: 100%; 
+	top: 0px;
+	overflow: hidden; 
+	position: absolute; 
+}
+#snowflake { 
+	width: 100%; 
+	height: 100%; 
+	position: absolute; 
+	top: 0; 
+	left: 0; 
+	overflow: hidden; 
+}
+.snowRoll { 
+	position: absolute; 
+	opacity: 0; 
+	-webkit-animation-name: mysnow; 
+	-webkit-animation-duration: 20s; 
+	-moz-animation-name: mysnow; 
+	-moz-animation-duration: 20s; 
+	height: 80px; 
+}
+@-webkit-keyframes mysnow {  
+	0% {
+	 bottom: 100%;
+	}
+	 50% {
+	 -webkit-transform: rotate(1080deg);
+	}
+	 100% {
+	 -webkit-transform: rotate(0deg) translate3d(50px, 50px, 50px);
+	}
+}
+@-moz-keyframes mysnow {  
+	0% {
+	 bottom: 100%;
+	}
+	 50% {
+	 -moz-transform: rotate(1080deg);
+	}
+	 100% {
+	 -moz-transform: rotate(0deg) translate3d(50px, 50px, 50px);
+	}
+}
+</style>
+</head>
+<body>
+
+	 <div id='content'>
+        <!-- 飘花 -->
+        <div id="snowflake"></div>
+    </div>
+	
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.transit.js"></script>
+	<script type="text/javascript">
+	$(function() {
+        var snowflakeURl = [
+            './images/icon_petal_1.png',
+            './images/icon_petal_2.png',
+            './images/icon_petal_3.png',
+            './images/icon_petal_4.png',
+            './images/icon_petal_5.png',
+            './images/icon_petal_6.png',
+            './images/icon_petal_7.png',
+            './images/icon_petal_8.png'
+        ]  
+        var container = $("#content");
+           visualWidth = container.width();
+           visualHeight = container.height();
+    　　//获取content的宽高
+        function snowflake() {
+            // 雪花容器
+            var $flakeContainer = $('#snowflake');
+    　　　　　　
+            // 随机六张图
+            function getImagesName() {
+                return snowflakeURl[[Math.floor(Math.random() * 8)]];
+            }
+            // 创建一个雪花元素
+            function createSnowBox() {
+                var url = getImagesName();
+                return $('<div class="snowbox" />').css({
+                    'width': 25,
+                    'height': 26,
+                    'position': 'absolute',
+                    'backgroundRepeat':'no-repeat',
+                    'zIndex': 100000,
+                    'top': '-41px',
+                    'backgroundImage': 'url(' + url + ')'
+                }).addClass('snowRoll');
+            }
+            // 开始飘花
+            setInterval(function() {
+                // 运动的轨迹
+                var startPositionLeft = Math.random() * visualWidth - 100,
+                    startOpacity    = 1,
+                    endPositionTop  = visualHeight - 40,
+                    endPositionLeft = startPositionLeft - 100 + Math.random() * 500,
+                    duration        = visualHeight * 10 + Math.random() * 5000;
+                // 随机透明度，不小于0.5
+                var randomStart = Math.random();
+                randomStart = randomStart < 0.5 ? startOpacity : randomStart;
+                // 创建一个雪花
+                var $flake = createSnowBox();
+                // 设计起点位置
+                $flake.css({
+                    left: startPositionLeft,
+                    opacity : randomStart
+                });
+                // 加入到容器
+                $flakeContainer.append($flake);
+                // 开始执行动画
+                $flake.transition({
+                    top: endPositionTop,
+                    left: endPositionLeft,
+                    opacity: 0.7
+                }, duration, 'ease-out', function() {
+                    $(this).remove() //结束后删除
+                });
+            }, 500);
+        }
+         snowflake()
+    　　　//执行函数
+    })
+	</script>
+</body>
+</html>
